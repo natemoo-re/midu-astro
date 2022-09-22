@@ -1,0 +1,37 @@
+<div class="menu">
+  <div class="backdrop"></div>
+  <div class="content"></div>
+</div>
+
+<script>
+  import { menu } from "../menu";
+
+  const el = document.querySelector(".menu")!;
+  menu.subscribe((open) => {
+    el.classList.toggle("open");
+  });
+</script>
+
+<style>
+  .menu {
+    position: fixed;
+    inset: 0;
+    visibility: hidden;
+  }
+  :global(.open) {
+    visibility: visible;
+  }
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background: gray.8;
+    opacity: 0.2;
+  }
+  .content {
+    width: 8xl;
+    height: screen;
+    background: white;
+    display: flex;
+    flex-direction: column;
+  }
+</style>

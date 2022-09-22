@@ -1,0 +1,10 @@
+<button id="toggle">Toggle Menu</button>
+
+<script>
+  import { menu } from "../menu";
+
+  const button = document.querySelector(`#toggle`)!;
+  button.addEventListener("click", () => {
+    menu.value = !menu.value;
+  });
+</script>

@@ -1,0 +1,34 @@
+---
+import { Image } from "@astrojs/image/components";
+import Favorite from "./Favorite";
+interface Props {
+  name: string;
+}
+const { name } = Astro.props;
+
+const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then(
+  (res) => res.json()
+);
+---
+
+<li>
+  <Image
+    src={pokemon.sprites.front_shiny}
+    width="96"
+    aspectRatio={1}
+    format="webp"
+    alt={pokemon.name}
+  />
+  <span>{pokemon.name}</span>
+  <Favorite client:visible name={pokemon.name} />
+</li>
+
+<style>
+  li {
+    display: flex;
+    flex-direction: column;
+  }
+  span {
+    color: red;
+  }
+</style>
